@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<title>Extracción líquido–líquido | Generar diagrama y calcular equilibrio</title>
+
+<meta name="description" content="Herramienta en línea para generar el diagrama de extracción líquido–líquido a partir de datos experimentales. Ingresa las composiciones de portador, solvente extractor y soluto para ambas fases y obtén la gráfica lista para tu reporte o tesis.">
+
+<link rel="stylesheet" href="/static/styles.css">
+
+<script>
+function crearTablas(){
+    let n = document.getElementById("n").value;
+    let a = document.getElementById("acuosa");
+    let o = document.getElementById("organica");
+
+    // 🔹 Nuevos títulos de columnas
+    a.innerHTML = o.innerHTML = `
+        <tr>
+            <th>Portador (A %)</th>
+            <th>Solvente extractor (B %)</th>
+            <th>Soluto (C %)</th>
+        </tr>
+    `;
+
+    for(let i = 0; i < n; i++){
+        a.innerHTML += `
+        <tr>
+            <td><input type="number" step="any" name="Aa${i}" required></td>
+            <td><input type="number" step="any" name="Ba${i}" required></td>
+            <td><input type="number" step="any" name="Ca${i}" required></td>
+        </tr>`;
+
+        o.innerHTML += `
+        <tr>
+            <td><input type="number" step="any" name="Ao${i}" required></td>
+            <td><input type="number" step="any" name="Bo${i}" required></td>
+            <td><input type="number" step="any" name="Co${i}" required></td>
+        </tr>`;
+    }
+
+    document.getElementById("n_hidden").value = n;
+}
+</script>
+</head>
+
+<body>
+
+<h1>Extracción Líquido–Líquido (L–L)</h1>
+
+<h2>Generador de diagrama a partir de datos experimentales</h2>
+
+<p>
+Esta herramienta te permite obtener la <strong>gráfica del proceso de extracción líquido–líquido</strong> a partir de tus datos de laboratorio. 
+Solo necesitas ingresar los porcentajes de cada componente en:
+</p>
+
+<ul>
+<li><strong>fase acuosa</strong></li>
+<li><strong>fase orgánica</strong></li>
+</ul>
+
+<p>
+El sistema realiza los cálculos automáticamente y genera el diagrama listo para utilizar en reportes, tareas o tesis, sin necesidad de saber programación.
+</p>
+
+<h2>Base teórica breve</h2>
+
+<p>
+En la <strong>extracción líquido–líquido</strong> se ponen en contacto dos líquidos inmiscibles o parcialmente miscibles. 
+Un soluto se reparte entre ambas fases hasta alcanzar el equilibrio.
+</p>
+
+<p>Normalmente se manejan tres componentes:</p>
+
+<ul>
+<li><strong>A — Portador</strong></li>
+<li><strong>B — Solvente extractor</strong></li>
+<li><strong>C — Soluto</strong></li>
+</ul>
+
+<p>
+Las composiciones se expresan en porcentaje en masa y deben cumplir en cada punto experimental:
+</p>
+
+<p style="text-align:center; font-weight:bold;">
+A + B + C = 100 %
+</p>
+
+<h2>Guía rápida de uso</h2>
+
+<ol>
+<li>Escribe el número de conjuntos experimentales</li>
+<li>Haz clic en <strong>Aceptar</strong></li>
+<li>Ingresa los porcentajes de A, B y C en cada fila</li>
+<li>Verifica que A + B + C = 100 %</li>
+<li>Presiona <strong>Generar diagrama</strong></li>
+<li>Observa la gráfica generada</li>
+</ol>
+
+<h3>Introduce el número de puntos</h3>
+
+<input id="n" type="number" min="1" placeholder="Conjuntos experimentales">
+<button type="button" onclick="crearTablas()">Aceptar</button>
+
+<form method="post" action="/extraccion-ll" target="grafica">
+    <input type="hidden" name="n" id="n_hidden">
+
+    <h3>Fase Acuosa</h3>
+    <table id="acuosa"></table>
+
+    <h3>Fase Orgánica</h3>
+    <table id="organica"></table>
+
+    <button type="submit">Generar diagrama</button>
+</form>
+
+<h2>Gráfica generada</h2>
+
+<div class="grafica-container">
+    <iframe name="grafica" title="Gráfica de extracción líquido-líquido"></iframe>
+</div>
+
+<p><strong>Nota final:</strong> únicamente necesitas <u>copiar la imagen generada</u> y pegarla directamente en tu archivo de Word, reporte, tesis o presentación.</p>
+
+</body>
+</html>

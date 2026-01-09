@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<title>Extracción sólido–líquido | Gráfica y cálculo en línea</title>
+
+<meta name="description" content="Genera la gráfica para procesos de extracción sólido–líquido. Ingresa valores de Kg de aceite/Kg de disolución y Kg de disolución/Kg de semilla seca. Calculadora y graficador online para ingeniería química.">
+
+<meta name="keywords" content="extracción sólido líquido, extracción SL, ingeniería química, gráfica extracción, aceite semillas, solvente, disolución, porcentaje, laboratorio, cálculo">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/styles.css">
+
+<style>
+/* ==== Estilo para mostrar fracciones ==== */
+.frac {
+  display: inline-block;
+  text-align: center;
+}
+.frac sup {
+  display: block;
+}
+.frac span {
+  display: block;
+  border-top: 1px solid white;
+}
+
+/* presentación */
+body{
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.5;
+}
+iframe{
+  width: 100%;
+  height: 500px;
+  border: 1px solid #ccc;
+}
+</style>
+
+<script>
+function crearTabla(){
+    let n = document.getElementById("n").value;
+    let t = document.getElementById("tabla");
+
+    t.innerHTML = `
+        <tr>
+            <th>
+                <span class="frac">
+                    <sup>Kg de aceite</sup>
+                    <span>Kg de disolución</span>
+                </span>
+            </th>
+
+            <th>
+                <span class="frac">
+                    <sup>Kg de disolución</sup>
+                    <span>Kg de semilla seca</span>
+                </span>
+            </th>
+        </tr>
+    `;
+
+    for(let i = 0; i < n; i++){
+        t.innerHTML += `
+        <tr>
+            <td><input name="A${i}" required></td>
+            <td><input name="B${i}" required></td>
+        </tr>`;
+    }
+
+    document.getElementById("n_hidden").value = n;
+}
+</script>
+</head>
+
+<body>
+
+<h1>Extracción sólido–líquido</h1>
+
+<h2>Generador de gráfica a partir de datos experimentales</h2>
+
+<p>
+Este programa permite obtener la <strong>gráfica del proceso de extracción sólido–líquido</strong> a partir de tus datos experimentales. 
+Solo necesitas ingresar los valores de:
+</p>
+
+<ul>
+<li><strong>A = Kg de aceite / Kg de disolución</strong></li>
+<li><strong>B = Kg de disolución / Kg de semilla seca</strong></li>
+</ul>
+
+<p>
+El sistema realiza los cálculos automáticamente y genera una gráfica lista para usar en reportes, prácticas de laboratorio, tareas o tesis.
+No necesitas conocimientos de programación.
+</p>
+
+<h2>Base teórica breve</h2>
+
+<p>
+La extracción sólido–líquido consiste en poner en contacto un <strong>sólido que contiene un soluto</strong>
+(por ejemplo, semilla con aceite) con un <strong>solvente extractor</strong>. 
+El solvente disuelve el aceite y luego se separa el sólido agotado del líquido con aceite disuelto.
+</p>
+
+<p>
+Las razones introducidas representan:
+</p>
+
+<ul>
+<li><strong>A:</strong> concentración de aceite respecto a la disolución total</li>
+<li><strong>B:</strong> cantidad de disolución por cantidad de semilla seca</li>
+</ul>
+
+<h2>Cómo usar la herramienta</h2>
+
+<ol>
+<li>Escribe cuántos conjuntos de datos experimentales tienes</li>
+<li>Haz clic en <strong>Aceptar</strong></li>
+<li>Ingresa los valores de A y B que obtuviste en laboratorio</li>
+<li>Presiona <strong>Generar diagrama</strong></li>
+<li>La gráfica aparecerá en la parte inferior</li>
+</ol>
+
+<h3>Paso 1: número de datos</h3>
+
+<input id="n" type="number" min="1" placeholder="Cantidad de conjuntos experimentales">
+<button onclick="crearTabla()">Aceptar</button>
+
+<form method="post" action="/extraccion-sl" target="grafica">
+    <input type="hidden" name="n" id="n_hidden">
+
+    <table id="tabla"></table>
+
+    <button type="submit">Generar diagrama</button>
+</form>
+
+<h2>Gráfica generada</h2>
+
+<p>
+Aquí aparecerá la gráfica del proceso de extracción sólido–líquido basada en tus datos ingresados.
+</p>
+
+<div class="grafica-container">
+    <iframe name="grafica" title="Gráfica de extracción sólido–líquido"></iframe>
+</div>
+
+<p><strong>Nota final:</strong> solo necesitas <u>copiar la imagen generada</u> y pegarla directamente en tu archivo de Word, informe, presentación o tesis.</p>
+
+</body>
+</html>

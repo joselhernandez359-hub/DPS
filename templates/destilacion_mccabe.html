@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>McCabe–Thiele</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<h2>Destilación – McCabe Thiele</h2>
+
+<!-- 🔍 CONTENIDO OPTIMIZADO PARA SEO -->
+<section>
+    <h3>Generador de diagramas McCabe–Thiele</h3>
+    <p>
+        Esta herramienta en línea permite calcular y generar diagramas composicion-temperatura para procesos de 
+        <strong>destilación binaria</strong> mediante el método de McCabe–Thiele. Es ideal para estudiantes,
+        investigadores y profesionales de la ingeniería química que necesitan analizar 
+        <strong>equilibrio líquido–vapor, diseño de columnas de destilación y separación de mezclas</strong>.
+    </p>
+
+    <p>
+        El sistema utiliza la ecuación de <strong>Antoine</strong> para obtener presiones de vapor en función 
+        de la temperatura y calcular las fracciones molares en fase líquida (x) y vapor (y). Con estos datos 
+        se generan automáticamente los diagramas de equilibrio necesarios para el análisis de destilación.
+    </p>
+
+    <h4>Cómo usar la herramienta</h4>
+    <ul>
+        <li>Ingrese temperaturas mínima y máxima del sistema</li>
+        <li>Capture la presión de operación y el número de divisiones</li>
+        <li>Introduzca las constantes de Antoine de cada componente</li>
+        <li>Pulse el botón “Generar diagrama”</li>
+    </ul>
+
+    <p>
+        El programa calcula las curvas de burbuja, rocío y equilibrio y genera una imagen lista para imprimir en tamaño A4, 
+        ideal para reportes, prácticas de laboratorio, tesis y proyectos de ingeniería de procesos.
+    </p>
+
+    <p><strong>Nota:</strong> solo necesita copiar la imagen generada e insertarla en su archivo o reporte.</p>
+</section>
+<!-- 🔍 FIN CONTENIDO SEO -->
+
+<form method="post" action="/destilacion_mccabe" target="grafica">
+    <fieldset>
+        <legend>Datos generales</legend>
+        <input name="T_low" placeholder="T baja (°C)" required>
+        <input name="T_high" placeholder="T alta (°C)" required>
+        <input name="P_op" placeholder="Presión (mmHg)" required>
+        <input name="n_div" placeholder="Divisiones" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Constantes Ecuacion Antoine (Componente Ligero)</legend>
+        <input name="A1" placeholder="A" required>
+        <input name="B1" placeholder="B" required>
+        <input name="C1" placeholder="C" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Constantes Ecuacion Antoine (Componente Pesado)</legend>
+        <input name="A2" placeholder="A" required>
+        <input name="B2" placeholder="B" required>
+        <input name="C2" placeholder="C" required>
+    </fieldset>
+
+    <button type="submit">Generar diagrama</button>
+</form>
+
+<div class="grafica-container">
+    <iframe name="grafica"></iframe>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ponchon–Savarit</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<h2>Destilación – Ponchon Savarit</h2>
+
+<!-- 🔍 CONTENIDO OPTIMIZADO PARA SEO -->
+<section>
+    <h3>Generador de diagramas Ponchon–Savarit para destilación binaria</h3>
+
+    <p>
+        Esta herramienta en línea permite calcular y generar los diagramas <strong>Entalpia-Concentración</strong> mediante el 
+        método <strong>Ponchon–Savarit</strong>, utilizado para el análisis detallado de 
+        <strong>destilación binaria, equilibrio líquido–vapor y diseño de columnas de destilación</strong>.
+    </p>
+
+    <p>
+        El sistema utiliza la <strong>ecuación de Antoine</strong>, calores específicos y calores latentes para 
+        determinar composiciones, entalpías del líquido y del vapor, y curvas de equilibrio. Es ideal para 
+        estudiantes, investigadores y profesionales que necesitan resultados confiables sin software complejo.
+    </p>
+
+    <h4>Cómo utilizar la herramienta</h4>
+    <ul>
+        <li>Ingrese rangos de temperatura, presión de operación y número de divisiones</li>
+        <li>Capture las constantes de la ecuación de Antoine para cada componente</li>
+        <li>Proporcione calores específicos, calores latentes y temperatura de referencia</li>
+        <li>Pulse el botón <strong>Generar diagrama</strong></li>
+    </ul>
+
+    <p>
+        El programa calcula automáticamente las entalpías de líquido y vapor, las fracciones molares 
+        y genera los diagramas <strong>H–X y Y–X en formato A4</strong>, listos para imprimir o insertar en 
+        reportes, prácticas de laboratorio y tesis.
+    </p>
+
+    <p><strong>Nota:</strong> solo necesita copiar la imagen generada e insertarla en su archivo o presentación.</p>
+</section>
+<!-- 🔍 FIN CONTENIDO SEO -->
+
+<form method="post" action="/destilacion_ponchon" target="grafica">
+
+<fieldset>
+<legend>Datos termodinámicos</legend>
+<input name="T_low" placeholder="T baja (°C)">
+<input name="T_high" placeholder="T alta (°C)">
+<input name="P_op" placeholder="Presión (mmHg)">
+<input name="n_div" placeholder="Divisiones">
+</fieldset>
+
+<fieldset>
+<legend>Constantes Ecuacion Antoine (Componente Ligero)</legend>
+<input name="A1"  placeholder="A">
+<input name="B1"  placeholder="B">
+<input name="C1"  placeholder="C">
+</fieldset>
+
+<fieldset>
+<legend>Constantes Ecuacion Antoine (Componente Pesado)</legend>
+<input name="A2"  placeholder="A">
+<input name="B2"  placeholder="B">
+<input name="C2"  placeholder="C">
+</fieldset>
+
+<fieldset>
+<legend>Propiedades</legend>
+<input name="cp_liq_A" placeholder="cp_liq_A">
+<input name="cp_liq_B" placeholder="cp_liq_B">
+<input name="cp_vap_A" placeholder="cp_vap_A">
+<input name="cp_vap_B" placeholder="cp_vap_B">
+<input name="lambdaA" placeholder="λA">
+<input name="lambda_ab" placeholder="λab">
+<input name="T0" placeholder="T0">
+</fieldset>
+
+<button type="submit">Generar diagrama</button>
+</form>
+
+<div class="grafica-container">
+    <iframe name="grafica"></iframe>
+</div>
+
+</body>
+</html>

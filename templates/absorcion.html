@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Absorción</title>
+<link rel="stylesheet" href="/static/styles.css">
+
+<!-- SEO -->
+<meta name="description" content="Generador de diagramas de absorción gas–líquido en equilibrio. Calculadora online para torres de absorción, lavadores de gases y control de emisiones. Genera diagramas listos para imprimir en formato A4.">
+<meta name="keywords" content="absorción gas líquido, equilibrio, diagrama de equilibrio, torres de absorción, lavado de gases, operación de absorción, ingeniería química, transferencia de masa">
+</head>
+
+<body>
+
+<h1>Generador de diagramas de absorción gas–líquido en equilibrio</h1>
+
+<p>Esta herramienta online permite calcular y generar el diagrama de equilibrio para procesos de absorción gas–líquido, utilizando relaciones molares entre las fases y presiones de vapor y operación.</p>
+
+<p>Está diseñada para estudiantes, profesores, investigadores e ingenieros químicos que trabajan con:</p>
+
+<ul>
+<li>torres de absorción</li>
+<li>lavadores de gases</li>
+<li>control de emisiones</li>
+<li>diseño de equipos de transferencia de masa</li>
+</ul>
+
+<p>El sistema genera automáticamente un diagrama gráfico en formato A4, listo para imprimir o insertar en reportes, prácticas o tesis.</p>
+
+<hr>
+
+<h2>¿Qué hace el programa?</h2>
+
+<ul>
+<li>convierte fracciones molares a relaciones molares</li>
+<li>calcula la pendiente de la línea de equilibrio por:
+    <ul>
+    <li>presión de vapor del soluto</li>
+    <li>presión de operación del sistema</li>
+    </ul>
+</li>
+<li>genera la curva de equilibrio gas–líquido</li>
+<li>marca la concentración inicial del gas</li>
+<li>permite elegir orientación:
+    <ul>
+    <li>horizontal A4</li>
+    <li>vertical A4</li>
+    </ul>
+</li>
+</ul>
+
+<p>El resultado final es un diagrama Y vs X donde:</p>
+
+<ul>
+<li>X = relación molar en el líquido</li>
+<li>Y = relación molar en el gas</li>
+</ul>
+
+<hr>
+
+<h2>Base teórica breve del proceso de absorción</h2>
+
+<p>La absorción gas–líquido es un proceso de transferencia de masa donde un componente del gas se disuelve en un líquido que lo absorbe. Se usa en:</p>
+
+<ul>
+<li>eliminación de contaminantes gaseosos</li>
+<li>producción química</li>
+<li>refinación</li>
+<li>tratamiento ambiental</li>
+</ul>
+
+<p>El programa se basa en el equilibrio entre fases y en la relación entre presión de vapor y presión de operación. La relación molar se expresa mediante la línea de equilibrio:</p>
+
+<p><strong>y = m·x</strong></p>
+
+<p>donde m = Pvap / Pope</p>
+
+<p>Se incluye también la condición Y inicial útil para diseño de etapas.</p>
+
+<hr>
+
+<h2>Absorción Gas–Líquido</h2>
+
+<form method="post" action="/absorcion" target="grafica">
+
+    <input name="Pvap" placeholder="Pvap" required>
+    <input name="Pope" placeholder="P operación" required>
+    <input name="y_inicial" placeholder="Concentración inicial en gas" required>
+
+    <p><strong>Orientación de la gráfica:</strong></p>
+
+    <label>
+        <input type="radio" name="orientacion" value="horizontal" checked>
+        Horizontal
+    </label>
+
+    <label>
+        <input type="radio" name="orientacion" value="vertical">
+        Vertical
+    </label>
+
+    <br><br>
+
+    <button type="submit">Generar diagrama</button>
+</form>
+
+<div class="grafica-container">
+    <iframe name="grafica"></iframe>
+</div>
+
+</body>
+</html>
