@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Absorción</title>
+
+  <meta name="description" content="Diseño de sistemas de absorción de gases: fundamentos, balances de materia, método gráfico y optimización de columnas de separación.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<main>
+     <h1>Absorción de Gases</h1>
+  <h2>¿Qué es la absorción?</h2>
+
+  <p>
+    En el mundo de la ingeniería química, rara vez obtenemos productos puros directamente de una reacción. Casi siempre, nos enfrentamos a mezclas complejas que requieren separación. Aquí es donde entra en juego la absorción de gases, una de las operaciones unitarias más fundamentales.
+</p>
+
+<p>
+    Imagina que tienes una corriente de aire contaminada con amoníaco o vapores de azufre que no puedes liberar a la atmósfera. La absorción es el proceso mediante el cual tomamos esa mezcla gaseosa y la ponemos en contacto con un líquido (llamado disolvente o absorbente) que tiene "afinidad" química o física por el contaminante. El resultado es una transferencia de materia: el contaminante viaja del gas al líquido, limpiando el gas y "ensuciando" el líquido.
+</p>
+
+<p>
+    Si la absorción es "lavar el gas", la desorción es "recuperar el gas". Aquí, un gas inerte arrastra un componente volátil que estaba disuelto en un líquido. Aunque van en direcciones opuestas, ambos procesos se rigen por los mismos principios físicos. Un punto crucial para el diseño es asumir que, generalmente, operamos de forma isotérmica (a temperatura constante), ya que el calor generado al disolver el gas suele ser pequeño en comparación con los flujos másicos involucrados.
+</p>
+ 
+<h2>Equilibrio Termodinámico y Solubilidad</h2>
+
+<p>
+    Antes de diseñar cualquier torre, debemos entender las leyes de la naturaleza que limitan cuánto gas podemos disolver. Esto se llama equilibrio termodinámico. Si dejamos un gas y un líquido en contacto infinito tiempo, llegarán a un punto donde ya no hay transferencia neta; el gas que entra al líquido es igual al que sale.
+</p>
+
+<p>
+    <strong>Temperatura:</strong> Aquí aplica la Ley de van 't Hoff. Dado que la disolución de gases suele liberar calor (es exotérmica), si calientas el líquido, el gas tiende a escapar. Por lo tanto, a mayor temperatura, menor solubilidad. Esto explica por qué las bebidas gaseosas pierden el gas más rápido si están calientes.
+</p>
+
+<p>
+    <strong>Presión:</strong> Al contrario que la temperatura, si aumentas la presión del gas, fuerzas a más moléculas a entrar en el líquido. La solubilidad aumenta.
+</p>
+
+<p>
+    Para poner esto en números, utilizamos dos leyes matemáticas:
+</p>
+
+<p>
+    Para <strong>soluciones ideales (Ley de Raoult): </strong> usa cuando las moléculas del soluto y del disolvente son similares. Dice que la presión parcial del gas en equilibrio es igual a su presión de vapor pura multiplicada por su fracción molar en el líquido (p<sup>*</sup> = Px).
+</p>
+
+<p>
+    Para <strong>soluciones diluidas (Ley de Henry):</strong>Es la más común en problemas ambientales o de trazas. Dice que la presión parcial es directamente proporcional a la concentración (p<sup>*</sup> = Hc). La constante H es específica para cada par gas-líquido.
+</p>
+
+<h2>El Diseño de Ingeniería: Balances de Materia y Líneas de Operación</h2>
+
+<p>
+    Una vez que conocemos el equilibrio (lo que la naturaleza permite), definimos lo que nosotros queremos hacer (la operación). Esto se modela mediante el balance de materia.
+</p>
+
+<p>
+    En una torre típica a contracorriente, el gas entra por abajo y sube, mientras el líquido entra por arriba y baja. Para analizar esto matemáticamente sin volvernos locos con cambios de volumen, se introduce un truco vital: el uso de relaciones molares (X y Y) en lugar de fracciones (x y y).
+</p>
+
+<p>
+    Y: Moles de soluto por mol de gas inerte (aire, por ejemplo).
+</p>
+
+<p>
+    X: Moles de soluto por mol de disolvente inerte (agua, por ejemplo).
+</p>
+
+<p>
+    ¿Por qué hacemos esto? Porque la cantidad de aire y agua (los inertes) no cambia a lo largo de la torre. Esto convierte nuestra ecuación de balance en una línea recta, llamada <strong>Recta de Operación.</strong>
+</p>
+
+<center>
+<p>
+
+    Y = (L'/G') X + constante
+</p>
+</center>
+
+<p>
+    Aquí, la pendiente es L'/G', la relación entre los flujos de líquido y gas.
+</p>
+
+<p>
+    Visualización Gráfica:
+</p>
+
+<p>
+    En la <strong>absorción</strong>, la línea de operación va por encima de la curva de equilibrio. Esto significa que el gas siempre tiene más soluto del que tendría en equilibrio, forzándolo a pasar al líquido.
+</p>
+
+<p>
+    En la <strong>desorción</strong>, la línea va por debajo, forzando al soluto a salir del líquido.
+</p>
+
+<h2>La Economía del Proceso: La Relación Líquido/Gas (L/G)</h2>
+
+<p>
+    Este es uno de los conceptos más importantes. ¿Cuánto líquido debo usar para limpiar el gas?
+</p>
+
+<p>
+    Si usas muchísimo líquido (pendiente alta): La absorción es muy rápida porque la fuerza impulsora es grande (la recta de operación se aleja mucho de la de equilibrio). Pero, bombear tanto líquido es carísimo y luego separarlo (recuperación) costará una fortuna en energía.
+</p>
+
+<p>
+    Si usas muy poco líquido (pendiente baja): La recta de operación baja hasta tocar la curva de equilibrio. A este punto lo llamamos Pinch Point. En este punto, la fuerza impulsora es cero. La transferencia se detiene. Para lograr la separación deseada con tan poco líquido, necesitarías una torre de altura infinita.
+</p>
+
+<p>
+    Se define este límite como (L'/G')min. En la práctica, calculamos este mínimo trazando una línea desde las condiciones de salida hasta tocar la curva de equilibrio en la entrada, y luego multiplicamos ese valor por un factor de seguridad (por ejemplo, operar al 1.5 veces el mínimo) para tener una torre de tamaño razonable y costo operativo viable.
+</p>
+
+<h2>El Corazón del Equipo: ¿Platos o Relleno?</h2>
+
+<p>
+    <strong>A. Torres de Platos (Contacto por Etapas)</strong>
+</p>
+
+<p>
+    Imagina una serie de pisos dentro de la torre. En cada piso (plato), el gas burbujea a través de una capa de líquido.
+</p>
+
+<p>
+    <strong>Etapa Teórica:</strong> Asumimos que en cada plato, el gas y el líquido se mezclan tan bien que salen en equilibrio perfecto.
+</p>
+
+<p>
+    Cálculo: Usamos métodos gráficos escalonados  para contar cuántos platos necesitamos. Si la solución es diluida (Línea de equilibrio y operación rectas), tenemos una herramienta poderosa: la Ecuación de Kremser-Brown-Souders. Esta fórmula nos permite calcular el número de platos (N) analíticamente usando un "Factor de Absorción" (A), sin necesidad de dibujar gráficos.
+</p>
+
+<p>
+    <strong>B. Torres de Relleno (Contacto Continuo)</strong>
+</p>
+
+<p>
+    En lugar de pisos, llenamos la torre con piezas cerámicas o plásticas (Anillos Raschig, Monturas Berl, Intalox). El objetivo es que el líquido moje estas piezas creando una superficie gigantesca para que el gas pase.
+</p>
+
+<p>
+    <strnog>Fenómeno de Inundación:</strnog> El gas sube y el líquido baja por los mismos huecos. Si subes demasiado la velocidad del gas, este empieza a frenar al líquido. Si sigues subiendo, el líquido se acumula, la torre se llena de líquido y la presión se dispara. El diseño debe usar gráficos para operar por debajo de este punto de inundación.
+</p>
+
+<h2>Dimensionamiento de Torres de Relleno: HOG y NOG</h2>
+
+<p>
+A diferencia de los platos, donde contamos "1, 2, 3 platos", en las torres de relleno calculamos una altura continua (Z). Dividiendo el problema en dos partes:    
+</p>
+
+<p>
+    Z = H<sub>OG</sub> × N<sub>OG</sub>
+</p>
+
+<p>
+    <strong>NOG (Número de Unidades de Transmisión Globales): </strong>Mide cuán difícil es la separación. Depende solo de las concentraciones: cuánto soluto tienes al principio, cuánto al final y qué tan lejos estás del equilibrio. Si quieres sacar el 99.9% del soluto, NOG será alto. 
+</p>
+
+<p>
+    <strong>HOG (Altura de una Unidad de Transmisión):</strong> Mide cuán eficiente es tu relleno. Depende de la física del equipo: qué tan bien fluye el líquido, qué tan rápido se difunden las moléculas. Un relleno moderno y eficiente tendrá un HOG pequeño (necesitas menos metros para hacer el mismo trabajo).
+</p>
+
+</main>
+
+</body>
+</html>

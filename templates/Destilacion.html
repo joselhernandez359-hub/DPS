@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Destilación</title>
+
+  <meta name="description" content="Fundamentos de la destilación y explicación del método de McCabe-Thiele para el diseño de columnas de separación.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<main>
+
+  <h1>Destilación: fundamentos y diseño de columnas</h1>
+
+  <p>
+  <!-- Introducción general -->
+  </p>
+
+  <h2>Fundamentos Termodinámicos de la Destilación y Conceptos de Mezcla</h2>
+
+<p>
+  La destilación es una operación unitaria fundamental en la ingeniería química diseñada para separar los componentes de una mezcla líquida. El principio básico de esta técnica reside en la vaporización parcial de la mezcla, de tal modo que se genera un vapor cuya composición química es diferente tanto de la mezcla líquida original como del líquido residual que permanece en el sistema. Esta capacidad de separación depende intrínsecamente de la volatilidad, que se define como la relación existente entre la presión parcial de vapor de un componente específico y su concentración en la fase líquida. Para comparar la facilidad de separación entre dos sustancias, se utiliza la volatilidad relativa, que es el cociente entre las volatilidades del componente más volátil y el menos volátil de la mezcla.<p>
+</p>
+
+<p>
+    Para entender cómo se comportan estas mezclas, recurrimos a leyes físicas ideales. La Ley de Raoult es aplicable a disoluciones ideales, que son aquellas formadas por sustancias con gran semejanza química. Según esta ley, la presión de vapor de cada componente en la mezcla es igual al producto de su fracción molar en el líquido por la tensión de vapor del componente en estado puro. Por otro lado, para componentes presentes en proporciones mínimas o en disoluciones muy diluidas, se aplica la Ley de Henry, la cual establece que la presión de un componente en el vapor es proporcional a su concentración en el líquido.
+</p>
+
+<p>    
+    Sin embargo, en la práctica industrial, muchas mezclas presentan desviaciones de la idealidad cuando la presión total medida difiere de la prevista por la Ley de Raoult. Para corregir estos cálculos, los ingenieros introducen coeficientes de actividad. En casos donde estas desviaciones son extremas, aparecen las mezclas azeotrópicas. En un punto azeotrópico, la composición del vapor generado es idéntica a la composición del líquido, por lo que la mezcla se comporta como si fuera un componente puro y no puede separarse mediante destilación simple. Un azeótropo mínimo es aquel que presenta un máximo en la presión de vapor y, por consiguiente, un mínimo en su temperatura de ebullición. También existen los heteroazeótropos, que ocurren en mezclas de líquidos totalmente inmiscibles donde la ebullición produce vapores de composición constante.
+</p>
+
+  <h2>Diagramas de Fase en Destilación y Recta de Alimentación (parámetro q)</h2>
+
+<p>
+La representación gráfica es vital para el diseño de procesos. Los diagramas de ebullición muestran la relación entre la composición de la mezcla líquida y su temperatura de ebullición a una presión constante. En estos gráficos, distinguimos dos curvas principales:
+</p>
+
+<p>
+  •	Curva de principio de condensación (o final de ebullición): Representa la composición del vapor y es la curva superior del diagrama.
+</p>
+
+<p>
+  •	Curva de principio de ebullición (o final de condensación): Representa la composición del líquido y es la curva inferior del diagrama.
+</p>
+  
+<p>
+ <figure>
+  <img 
+    src="C:/pruebas/imagen/Diagrama de Fases.png" 
+    alt="Diagrama de fases de equilibrio líquido-vapor: Curva de burbuja y curva de rocío vs Temperatura" 
+    title="Gráfico de Equilibrio de Fases"
+    loading="lazy">
+  <figcaption>
+    <strong>Figura 1:</strong> Diagrama de fases que muestra la relación entre la temperatura (de 56°C a 111°C) y el equilibrio térmico mediante la 
+    <span style="color: blue;">curva de burbuja o de ebullición</span> y la 
+    <span style="color: red;">curva de rocío o de condensación</span>.
+  </figcaption>
+</figure>
+</p>
+
+<p>
+Otros gráficos esenciales incluyen los diagramas de presión de vapor, que enfrentan la composición contra la presión parcial a una temperatura fija , y los diagramas de equilibrio, que representan directamente la composición del líquido frente a la del vapor a presión total constante.
+Dentro de estos diagramas de equilibrio, es crucial entender el estado térmico de la alimentación mediante el parámetro q, que define la pendiente de la recta de alimentación. El valor de q se define como el cociente entre el calor necesario para vaporizar la alimentación y su calor latente. Según el estado de la mezcla que entra a la columna, observamos distintos comportamientos:
+</p>
+
+<p>
+<figure>
+  <img 
+    src="C:/pruebas/imagen/Diagrama de Equilibrio.png" 
+    alt="Diagrama de equilibrio líquido-vapor: Relación de fracción molar Xa vs Ya con curva de equilibrio y línea OP" 
+    title="Diagrama de Equilibrio de Fases X-Y"
+    loading="lazy">
+  <figcaption>
+    <strong>Figura 2:</strong> Diagrama de equilibrio que muestra la 
+    <span style="color: green;">curva de equilibrio (verde)</span> relacionando la fracción molar en el líquido frente a la fracción molar en el vapor, comparada con la <strong>línea OP</strong> que es de referencia.
+  </figcaption>
+</figure>
+</p>
+
+<p>
+<strong>•Líquido subenfriado</strong> (q > 1): La mezcla entra a una temperatura inferior a su punto de ebullición.
+</p>
+
+<p>
+<strong>•Líquido saturado</strong> (q = 1): La alimentación está en su punto de ebullición; en el diagrama de McCabe-Thiele, esto se representa como una recta vertical.
+</p>
+
+<p>
+<strong>•Mezcla (líquida + vapor)</strong> (0 < q < 1): La alimentación entra parcialmente vaporizada.
+</p>
+
+<p>
+•	<strong>Vapor saturado</strong> (q = 0): La mezcla está totalmente en fase vapor a su temperatura de condensación; se representa como una recta horizontal.
+</p>
+
+<p>
+<strong>•Vapor sobrecalentado</strong> (q < 0): El vapor entra a una temperatura superior a su punto de rocío.
+</p>
+
+<p>
+  <figure>
+  <img 
+    src="C:/pruebas/imagen/Linea Q.jpg" 
+    alt="Diagrama de la Línea q en el método de McCabe-Thiele: Estados de agregación de la alimentación para destilación" 
+    title="Línea q: Condición Térmica de la Alimentación"
+    loading="lazy">
+  <figcaption>
+    <strong>Figura 3:</strong> Representación gráfica de la <strong>Línea q</strong> y su dependencia del estado térmico de la alimentación. El diagrama muestra las pendientes según el valor de q: 
+</figcaption>
+</figure>
+</p>
+  
+<h2>Métodos de Destilación Simple y Balances de Materia y Energía</h2>
+
+<p>
+  La destilación simple es el método más básico y consiste en producir un vapor enriquecido en los componentes más volátiles, dejando un residuo rico en los menos volátiles. Existen tres variantes principales:
+</p>
+
+  <p>
+  <strong>1.	Destilación de equilibrio</strong> (Flash o cerrada): El líquido se calienta a una temperatura intermedia entre su punto inicial y final de ebullición, permitiendo que las fases de vapor y líquido alcancen el equilibrio termodinámico antes de separarse. Es una operación muy común en el tratamiento de petróleos utilizando separadores tipo ciclón. Para este proceso, es indispensable realizar un balance entálpico para determinar el calor necesario.
+</p>
+
+<p>
+•	La entalpía del líquido se calcula sumando el calor sensible de los componentes puros (desde una temperatura base o temperatura de referencia  T0) más el calor de mezcla.
+</p>
+
+<p>
+•	La entalpía del vapor incluye el calentamiento del líquido, el calor latente de vaporización y el calentamiento adicional del vapor, todo ponderado por la composición de la mezcla. En ausencia de datos experimentales de calor latente, se emplea la Regla de Trouton, que asume que el calor molar de vaporización es proporcional a la temperatura absoluta de ebullición.
+</p>
+
+  <p>
+  <strong>2.	Destilación diferencial</strong> (o abierta): El líquido se calienta hasta la ebullición y los vapores se retiran del sistema de forma continua. Esto provoca que el líquido residual se empobrezca progresivamente en componentes volátiles y que su temperatura de ebullición aumente con el tiempo. Este proceso físico se describe matemáticamente mediante la ecuación de Lord Rayleigh, que vincula las cantidades iniciales y finales de líquido con el cambio en su composición.
+</p>
+
+<p>
+ <strong> 3.	Destilación por arrastre de vapor:</strong> Se utiliza específicamente para sistemas inmiscibles. Al no mezclarse los componentes, la presión total es la suma de las presiones de vapor individuales. Esto permite que la mezcla hierva a una temperatura inferior a 100 °C (a presión atmosférica), lo cual es ideal para sustancias con puntos de ebullición muy altos o que son sensibles al calor y podrían descomponerse. En este proceso se considera una eficacia de arrastre para corregir desviaciones si el contacto entre el vapor de agua y la sustancia no es perfecto.
+</p>
+
+  <h2>Rectificación Continua: Funcionamiento de Columnas de Platos</h2>
+
+<p>
+  La rectificación es una evolución de la destilación que utiliza el contacto en contracorriente entre el vapor ascendente y el líquido condensado descendente (reflujo). Este proceso ocurre en una columna de platos, un aparato cilíndrico diseñado para maximizar el contacto íntimo entre fases mediante dispositivos como platos de borboteo.
+</p>
+
+<p>
+Una instalación típica consta de:
+</p>
+
+<p>
+<strong>•	Calderín:</strong> Ubicado en la base, es donde se aplica calor para hacer hervir la mezcla y generar el flujo de vapor ascendente.
+</p>
+
+<p>
+<strong>•	Condensador de reflujo:</strong> Situado en la parte superior (cúspide), condensa el vapor para suministrar el líquido descendente L necesario para la rectificación.
+</p>
+
+<p>
+<strong>•	Sección superior (de rectificación):</strong> Se encuentra por encima del plato donde entra la alimentación; su función es enriquecer el vapor en el componente más volátil.
+</p>
+
+<p>
+<strong>•	Sección inferior (de agotamiento o stripping): </strong>Situada por debajo del plato de alimentación, se encarga de eliminar los componentes volátiles del líquido que desciende hacia el residuo.
+Análisis por el Método de McCabe-Thiele
+</p>
+
+<p>
+  <figure>
+  <img 
+    src="C:/pruebas/imagen/columna.png" 
+    alt="Esquema de una columna de destilación fraccionada: Componentes principales incluyendo condensador, hervidor, alimentación y flujos de producto" 
+    title="Diagrama de Operación de una Columna de Destilación"
+    loading="lazy">
+  <figcaption>
+    <strong>Figura 4:</strong> Diagrama de flujo de una columna de platos para destilación continua. Se detallan las corrientes de entrada y salida: 
+  </figcaption>
+</figure>
+</p>
+
+<p>
+Para determinar cuántos platos son necesarios para una separación dada, se utiliza habitualmente el método de McCabe-Thiele, que es un procedimiento gráfico basado en el diagrama de equilibrio y las denominadas rectas de operación.
+</p>
+
+<p>
+•	Recta superior (rectificación): Pasa por el punto de composición del destilado y su pendiente está definida por la relación de reflujo.
+</p>
+
+<p>
+•	Recta inferior (agotamiento): Pasa por la composición del residuo.
+</p>
+
+<p>
+•	Intersección: El punto donde ambas rectas se cortan es el punto de alimentación, cuya ubicación depende del estado térmico de la misma (la recta q).
+Un plato teórico es aquel nivel ideal dentro de la columna donde el líquido y el vapor que salen de él están en perfecto equilibrio termodinámico. Para pasar de platos teóricos a platos reales, se utiliza la eficacia de Murphree, que mide cuánto enriquecimiento real se logra en el vapor comparado con el ideal. El número total de platos reales se obtiene dividiendo el número de platos teóricos entre la eficacia global del sistema.
+</p>
+
+  <h2>Parámetros de Diseño y Operación de Columnas de Destilación</h2>
+
+<p>
+  La eficiencia y el coste de una columna dependen en gran medida de la relación de reflujo, que es la cantidad de líquido que se devuelve a la columna por cada unidad de destilado que se retira.
+</p>
+
+<p>
+  <strong>•	Reflujo mínimo:</strong> Es el valor límite de reflujo para el cual se requeriría un número infinito de platos (y por tanto un coste de equipo infinito) para alcanzar la separación.
+</p>
+
+<p>
+  <strong>•	Reflujo total:</strong> Ocurre cuando todo el vapor condensado se devuelve a la columna. En este estado, el número de platos es el mínimo posible y las rectas de operación coinciden con la diagonal $x=y$ del diagrama. Para calcular este número mínimo de platos bajo el supuesto de volatilidad relativa constante, se utiliza la Ecuación de Fenske.
+</p>
+
+<p>
+  En cuanto al dimensionado físico, el diámetro de la columna se calcula basándose en la velocidad óptima de los vapores y el caudal total de vapor que circula. Esta velocidad admisible depende de las densidades del líquido y el vapor, así como de un coeficiente que considera la distancia física entre los platos.
+</p>
+
+<p>
+Existen también las columnas de agotamiento ("stripping"), que son equipos simplificados, a menudo sin sección de rectificación, diseñados para separar pequeñas trazas de componentes volátiles de un líquido alimentado por la parte superior.
+</p>
+
+  <h2>Columnas de Relleno y Rectificación Discontinua</h2>
+
+<p>
+  Como alternativa a los platos, se emplean las columnas de relleno. Estas torres están llenas de cuerpos sólidos con formas especiales (como anillos Raschig o monturas Berl) que ofrecen una enorme superficie para facilitar el contacto continuo entre el vapor y el líquido en contracorriente. Para calcular la altura de relleno necesaria, se utilizan dos conceptos:
+</p>
+
+<p>
+  1.	Altura Equivalente a un Plato Teórico (HETP): La altura de material de relleno que produce el mismo efecto de separación que un plato ideal.
+</p>
+
+<p>
+  2.	Elementos de transmisión (NTOG): Un método basado en la resistencia al transporte de materia. El cálculo involucra el Número global de elementos de transmisión (NTOG) y la Altura del elemento de transmisión global (HOG). En estos cálculos es común usar el Módulo de Schmidt, un número adimensional para determinar coeficientes de transferencia y difusividades.
+</p>
+
+<p>
+  Finalmente, la rectificación discontinua (por lotes) se utiliza cuando la mezcla se carga de una sola vez en el calderín y su composición varía con el tiempo conforme se retira el destilado. Hay dos formas principales de operarla:
+</p>
+
+<p>
+  •	A producto constante: Se ajusta continuamente la relación de reflujo para que el destilado mantenga siempre la misma pureza; el tiempo de operación se calcula con la ecuación de Bogart.
+</p>
+
+<p>
+  •	A reflujo constante: Se mantiene fija la relación de reflujo, lo que provoca que la calidad del destilado disminuya gradualmente a medida que los componentes volátiles se agotan en el calderín.
+</p>
+
+</main>
+
+</body>
+</html>
